@@ -1,0 +1,29 @@
+name: myproject
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: ^3.5.3
+
+dependencies: 
+  cupertino_icons: ^1.0.8
+  get_cli: ^1.8.1
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  google_maps_flutter: ^2.10.0
+  location: ^7.0.1
+  flutter_svg: ^2.0.16
+  flutter_polyline_points: ^2.1.0
+  
+
+dev_dependencies: 
+  flutter_lints: ^4.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  assets: 
+    - assets/
+  uses-material-design: true
+
