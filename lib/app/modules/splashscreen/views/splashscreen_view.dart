@@ -14,7 +14,7 @@ class SplashScreenView extends GetView<SplashscreenController> {
       // } else {
       //   Get.offAllNamed(Routes.LOGIN);
       // }
-      Get.offAllNamed(Routes.MAP);
+      Get.offAllNamed(Routes.HOME_ADMIN);
     }));
     return Scaffold(
       body: Container(

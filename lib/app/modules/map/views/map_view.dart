@@ -1,83 +1,64 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../controllers/map_controller.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 
-class MapView extends StatelessWidget {
-  final MapController mapController = Get.put(MapController());
+// class MapView extends StatefulWidget {
+//   const MapView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rute Perjalanan'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.clear),
-            onPressed: () => mapController.clearRoute(),
-          ),
-        ],
-      ),
-      body: Obx(() {
-        if (mapController.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
-        }
+//   @override
+//   State<MapView> createState() => _MapPageState();
+// }
 
-        return Stack(
-          children: [
-            GoogleMap(
-              onMapCreated: (controller) =>
-                  mapController.googleMapController = controller,
-              initialCameraPosition: CameraPosition(
-                target: mapController.userLocation.value,
-                zoom: 12,
-              ),
-              markers: {
-                ...mapController.destinations.map((destination) {
-                  return Marker(
-                    markerId: MarkerId(destination.toString()),
-                    position: destination,
-                    infoWindow: InfoWindow(
-                      title: 'Destinasi',
-                      snippet: destination.toString(),
-                    ),
-                    onTap: () => mapController.addToRoute(destination),
-                  );
-                }).toSet(),
-                Marker(
-                  markerId: const MarkerId('userLocation'),
-                  position: mapController.userLocation.value,
-                  icon: BitmapDescriptor.defaultMarkerWithHue(
-                      BitmapDescriptor.hueBlue),
-                  infoWindow: const InfoWindow(title: 'Lokasi Anda'),
-                ),
-              },
-              polylines: {
-                Polyline(
-                  polylineId: const PolylineId('route'),
-                  points: [mapController.userLocation.value]
-                      .followedBy(mapController.selectedRoute)
-                      .toList(),
-                  color: Colors.blue,
-                  width: 4,
-                ),
-              },
-            ),
-            Positioned(
-              bottom: 20,
-              left: 10,
-              right: 10,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Logika untuk rute efisien bisa ditambahkan di sini
-                  Get.snackbar('Rute', 'Menampilkan rute sesuai pilihan Anda.');
-                },
-                child: const Text('Hitung Rute'),
-              ),
-            ),
-          ],
-        );
-      }),
-    );
-  }
-}
+// class _MapPageState extends State<MapView> {
+//   MapController controller = MapController(
+//     initPosition: GeoPoint(latitude: 47.4358055, longitude: 8.4737324),
+//     areaLimit: BoundingBox(
+//       east: 10.4922941,
+//       north: 47.8084648,
+//       south: 45.817995,
+//       west: 5.9559113,
+//     ),
+//   );
+//   @override
+//   Widget build(BuildContext context) {
+//     return OSMFlutter(
+//         controller: controller,
+//         osmOption: OSMOption(
+//           userTrackingOption: const UserTrackingOption(
+//             enableTracking: true,
+//             unFollowUser: false,
+//           ),
+//           zoomOption: const ZoomOption(
+//             initZoom: 8,
+//             minZoomLevel: 3,
+//             maxZoomLevel: 19,
+//             stepZoom: 1.0,
+//           ),
+//           userLocationMarker: UserLocationMaker(
+//             personMarker: const MarkerIcon(
+//               icon: Icon(
+//                 Icons.location_history_rounded,
+//                 color: Colors.red,
+//                 size: 48,
+//               ),
+//             ),
+//             directionArrowMarker: const MarkerIcon(
+//               icon: Icon(
+//                 Icons.double_arrow,
+//                 size: 48,
+//               ),
+//             ),
+//           ),
+//           roadConfiguration: const RoadOption(
+//             roadColor: Colors.yellowAccent,
+//           ),
+//           markerOption: MarkerOption(
+//               defaultMarker: const MarkerIcon(
+//             icon: Icon(
+//               Icons.person_pin_circle,
+//               color: Colors.blue,
+//               size: 56,
+//             ),
+//           )),
+//         ));
+//   }
+// }

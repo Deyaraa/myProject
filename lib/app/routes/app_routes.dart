@@ -8,6 +8,8 @@ abstract class Routes {
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const PERAN = _Paths.PERAN;
   static const MAP = _Paths.MAP;
+  static const HOME_ADMIN = _Paths.HOME_ADMIN;
+  static const ADD_PRODUK = _Paths.ADD_PRODUK;
 }
 
 abstract class _Paths {
@@ -17,4 +19,6 @@ abstract class _Paths {
   static const SPLASHSCREEN = '/splashscreen';
   static const PERAN = '/peran';
   static const MAP = '/map';
+  static const HOME_ADMIN = '/home-admin';
+  static const ADD_PRODUK = '/add-produk';
 }
